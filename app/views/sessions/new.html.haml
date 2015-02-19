@@ -1,0 +1,7 @@
+.container
+	= form_for(:session, url: login_path, :html => {:class => "new_user"}) do |f|
+		.form-group
+			= f.text_field :name, :placeholder => "Username"
+		.form-group.frm
+			= f.password_field :password, :placeholder => "Password"
+		= f.submit "Login"

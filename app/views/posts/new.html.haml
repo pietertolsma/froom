@@ -1,0 +1,14 @@
+%h1 
+	Create Post in
+	= @category.title
+	!
+	= @category.id
+= form_for @post do |f|
+	.input-group
+		= f.text_field :title, :class => "input", :placeholder => "Post Title.."
+	.input-group
+		= f.text_area :content, :class => "text", :placeholder => "Type content here.."
+	= f.hidden_field :category_id, :value => @category.id
+	.input-group
+		= f.submit
+	= link_to 'Cancel', @category

@@ -1,0 +1,25 @@
+%h2
+	Author:
+	= @post.user.name
+	%br
+	Born on:
+	= @post.user.birthday.strftime("%d %B, %Y")
+
+%h1
+	= @post.title
+%p
+	= @post.content
+= form_for @comment do |f|
+	= f.text_area :content
+	= f.hidden_field :post_id, :value => @post.id
+	= f.hidden_field :user_id, :value => current_user.id
+	= f.submit
+
+- @comments.each do |cmnt|
+	%p
+		= cmnt.content
+	%p
+		Posted at
+		= cmnt.created_at.strftime("%H:%M on %d %B, %Y")
+		by
+		= cmnt.user.name

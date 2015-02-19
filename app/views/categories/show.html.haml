@@ -1,0 +1,13 @@
+.posts_container
+	%h1
+		= @category.title
+	- if logged_in?
+		= link_to 'New Post', new_post_path + "?category=" + @category.id.to_s
+	= link_to 'Back', categories_path
+
+- @posts.each do |post|
+	= link_to post do
+		%h1
+			= post.title
+	%p
+		= post.created_at.strftime("%d %B, %Y")

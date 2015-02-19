@@ -1,0 +1,11 @@
+.cat_container
+	- @categories.each do |cat|
+		= link_to cat do
+			.category
+				%h2
+					= cat.title
+				%p
+					= cat.description
+				%p
+					posts: 0
+					last post at febr 8

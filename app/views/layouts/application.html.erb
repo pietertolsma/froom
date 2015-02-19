@@ -8,7 +8,21 @@
 </head>
 <body>
 
-<%= yield %>
+<div class="header">
+	<%= link_to categories_path do %>
+		<h1>Froom</h1>
+	<% end %>
+	<p>Awesome Forum for Awesome People</p>
+	<% if logged_in? %>
+		<%= link_to 'Logout', logout_path, method: "delete" %>
+	<% else %>
+		<%= link_to 'Login', new_session_path %>
+		<%= link_to 'Register', new_user_path %>
+	<% end %>
+</div>
+<div class="main_content">
+	<%= yield %>
+</div>
 
 </body>
 </html>
