@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
 
-	belongs_to :category
+	belongs_to :category, :class_name => "category", :foreign_key => "category_id"
 	belongs_to :user
 	has_many :comments
 

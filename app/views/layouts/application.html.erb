@@ -12,7 +12,7 @@
 	<%= link_to categories_path do %>
 		<h1>Froom</h1>
 	<% end %>
-	<p>Awesome Forum for Awesome People</p>
+	<p class="kicker">Awesome Forum for Awesome People</p>
 	<% if logged_in? %>
 		<%= link_to 'Logout', logout_path, method: "delete" %>
 	<% else %>

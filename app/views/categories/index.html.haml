@@ -4,8 +4,10 @@
 			.category
 				%h2
 					= cat.title
+				%hr
 				%p
 					= cat.description
+				%hr
 				%p
-					posts: 0
-					last post at febr 8
+					posts:
+					= cat.posts.count
