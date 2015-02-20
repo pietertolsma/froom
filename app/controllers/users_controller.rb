@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 		if user.save
 			redirect_to categories_path
 		else
-			redirect_to 'new'
+			redirect_to :back
 		end
 	end
 

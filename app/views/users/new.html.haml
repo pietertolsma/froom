@@ -1,7 +1,13 @@
 = form_for @user do |f|
-	= f.text_field :name, :placeholder => "Username"
-	= f.text_field :email, :placeholder => "Email"
-	= f.date_field :birthday, :placeholder => 'born_on'
-	= f.password_field :password, :placeholder => "Password"
-	= f.password_field :password_confirmation, :placeholder => "Confirm password"
-	= f.submit
+	.form-group
+		= f.text_field :name, :placeholder => "Username"
+	.form-group
+		= f.text_field :email, :placeholder => "Email"
+	.form-group
+		= f.date_field :birthday, :placeholder => 'born_on'
+	.form-group
+		= f.password_field :password, :placeholder => "Password"
+	.form-group
+		= f.password_field :password_confirmation, :placeholder => "Confirm password"
+	.form-group
+		= f.submit "Register!", :class => "button submit"

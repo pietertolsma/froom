@@ -1,13 +1,15 @@
-.posts_container
-	%h1
-		= @category.title
-	- if logged_in?
-		= link_to 'New Post', new_post_path + "?category=" + @category.id.to_s
-	= link_to 'Back', categories_path
-
-- @posts.each do |post|
-	= link_to post do
+.category-container
+	.category-header
+		- if logged_in?
+			= link_to 'New Post', new_post_path + "?category=" + @category.id.to_s, :class => "button"
 		%h1
-			= post.title
-	%p
-		= post.created_at.strftime("%d %B, %Y")
+			= @category.title
+		= link_to 'Back', categories_path, :class => "button"
+	.category-main
+		- @posts.each do |post|
+			.post-container
+				= link_to post do
+					%h1
+						= post.title
+				%p
+					= post.created_at.strftime("%d %B, %Y")
