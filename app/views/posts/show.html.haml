@@ -1,25 +1,65 @@
-%h2
-	Author:
-	= @post.user.name
-	%br
-	Born on:
-	= @post.user.birthday.strftime("%d %B, %Y")
-
-%h1
-	= @post.title
-%p
-	= @post.content
-= form_for @comment do |f|
-	= f.text_area :content
-	= f.hidden_field :post_id, :value => @post.id
-	= f.hidden_field :user_id, :value => current_user.id
-	= f.submit
-
-- @comments.each do |cmnt|
-	%p
-		= cmnt.content
-	%p
-		Posted at
-		= cmnt.created_at.strftime("%H:%M on %d %B, %Y")
-		by
-		= cmnt.user.name
+.post-container
+	.row
+		.author
+			= gravatar_image_tag(@post.user.email.gsub('spam', 'mdeering'), :alt => @post.user.name, :class=> "picture")
+			%h2
+				Author:
+				= @post.user.name
+			%h3
+				Karma:
+				= @post.user.karma
+			%h3
+				Joined froom on
+				= @post.user.created_at.strftime("%d %B, %Y")
+		.post
+			%h1
+				= @post.title
+			%p
+				= @post.content
+			%p.date
+				Posted at
+				= @post.created_at.strftime("%H:%M on %d %B, %Y")
+	.comment-section
+		%h1
+			= pluralize(@post.comments.count, 'Comment')
+		.form
+			.author
+				= gravatar_image_tag(current_user.email.gsub('spam', 'mdeering'), :alt => current_user.name, :class=> "picture")
+				%h2
+					Author:
+					= current_user.name
+				%h3
+					Karma:
+					= current_user.karma
+				%h3
+					Joined froom on
+					= current_user.created_at.strftime("%d %B, %Y")	
+			= form_for @comment do |f|
+				.input-group
+					= f.text_area :content, :placeholder => "Type comment here.."
+					= f.hidden_field :post_id, :value => @post.id
+					= f.hidden_field :user_id, :value => current_user.id
+				.input-group
+					= f.submit "Post Comment", :class => "button submit"
+		.comment-list
+			- @comments.each do |cmnt|
+				.comment-container
+					.author
+						= gravatar_image_tag(cmnt.user.email.gsub('spam', 'mdeering'), :alt => cmnt.user.name, :class=> "picture")
+						%h2
+							Author:
+							= cmnt.user.name
+						%h3	
+							Karma:
+							= cmnt.user.karma
+						%h3
+							Joined froom on
+							= cmnt.user.created_at.strftime("%d %B, %Y")	
+					.comment-content
+						%p
+							= cmnt.content
+						%p
+							Posted at
+							= cmnt.created_at.strftime("%H:%M on %d %B, %Y")
+							by
+							= cmnt.user.name

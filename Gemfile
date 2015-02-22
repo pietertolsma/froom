@@ -29,6 +29,8 @@ gem 'bcrypt'
 
 gem 'haml'
 
+gem 'gravatar_image_tag'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

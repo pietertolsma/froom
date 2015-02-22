@@ -25,3 +25,54 @@
 		font-size: 1.2em
 		border: 1px solid gray
 		font-family: 'Oswald', sans-serif
+.post-container
+	background-image: image-url('category.png')
+	color: white
+	padding: 10px
+	.author
+		font-size: .7em
+		width: 20%
+		min-width: 100px
+		text-align: left
+		float: left
+		.picture
+			border-radius: 50%
+	.row
+		&:after
+			clear: both
+			content: ""
+			display: table
+		.post
+			text-align: left
+			width: 80%
+			float: right
+			font-size: 1.3em
+
+	.comment-section
+		.form
+			width: 80%
+			display: flex
+			margin: 40px 0
+			form
+				flex-grow: 2
+			.input-group
+				width: 100%
+				input, textarea
+					width: 100%
+				textarea
+					font-family: 'Oswald', sans-serif
+					font-size: 1.2em
+					resize: none
+				.submit
+					border: none
+					color: white
+		.comment-container
+			margin: 20px 0
+			text-align: left
+			&:after
+				clear: both
+				display: table
+				content: ""
+			.comment-content
+				float: right
+				width: 80%

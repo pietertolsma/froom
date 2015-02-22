@@ -6,10 +6,16 @@ class UsersController < ApplicationController
 
 	def create
 		user = User.new(user_params)
-
-		if user.save
-			redirect_to categories_path
+		if user.valid?
+			if user.save
+				redirect_to categories_path
+			else
+				redirect_to :back
+			end
 		else
+			user.errors.messages.each do |msg|
+				flash[:danger] = msg
+			end
 			redirect_to :back
 		end
 	end
